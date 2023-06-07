@@ -6,6 +6,7 @@
 #include "raytrace/ray.h"
 #include "raytrace/hit.h"
 
+
 bool BoundingBox::intersect(const Ray &r, Hit &h) const {
     const Vec3f& dir = r.getDirection();
     const Vec3f& origin = r.getOrigin();
@@ -58,6 +59,9 @@ bool BoundingBox::intersect(const Ray &r, Hit &h) const {
     }
     return is_hit;
 }
+
+
+
 
 // Uses 12 edges (each with 12 triangles)
 void BoundingBox::packMesh(float* &current) const {

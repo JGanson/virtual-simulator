@@ -190,6 +190,7 @@ void OpenGLCanvas::keyboardCB(GLFWwindow* /*window*/, int key, int /*scancode*/,
     }
     if ((action == GLFW_PRESS || action == GLFW_REPEAT) && key < 256) {
         switch (key) {
+            /*
             case 'e': case 'E': {
                 // Draw ray traced image
                 DrawRayTracedImage();
@@ -406,6 +407,7 @@ void OpenGLCanvas::keyboardCB(GLFWwindow* /*window*/, int key, int /*scancode*/,
                exit(0);
                break;
             }
+            */
             default: {
                 std::cout << "UNKNOWN KEYBOARD INPUT  '" << (char)key << "'" << std::endl;
             }

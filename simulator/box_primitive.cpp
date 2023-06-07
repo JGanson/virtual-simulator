@@ -3,6 +3,7 @@
 #include "raytrace/hit.h"
 #include "argparser.h"
 
+
 bool BoxPrimitive::intersect(const Ray& ray, Hit& hit) const {
     bool found_hit = bbox.intersect(ray, hit);
     if (found_hit) {

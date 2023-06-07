@@ -1,4 +1,4 @@
-# Install script for directory: /home2/AdvancedGraphics/final/acg-final-project/src
+# Install script for directory: /home2/Virtual-AI/simulator
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home2/AdvancedGraphics/final/acg-final-project/src/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home2/Virtual-AI/simulator/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

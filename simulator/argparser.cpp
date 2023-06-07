@@ -120,7 +120,9 @@ ArgParser::ArgParser(int argc, const char *argv[], MeshData *_mesh_data) {
             mesh_data->width = atoi(argv[i]);
             i++; assert (i < argc); 
             mesh_data->height = atoi(argv[i]);
-        } else if (arg == std::string("--num_bounces")) {
+        } 
+        /*
+        else if (arg == std::string("--num_bounces")) {
             i++; assert (i < argc); 
             mesh_data->num_bounces = atoi(argv[i]);
         } else if (arg == std::string("--num_shadow_samples")) {
@@ -155,7 +157,9 @@ ArgParser::ArgParser(int argc, const char *argv[], MeshData *_mesh_data) {
         } else if (arg == std::string("--initial_gather_radius")) {
             i++; assert(i < argc);
             mesh_data->initial_gather_radius = atof(argv[i]);
-        } else {
+        }
+        */
+         else {
             std::cout << "ERROR: unknown command line argument " 
                 << i << ": '" << argv[i] << "'" << std::endl;
             exit(1);
@@ -378,14 +382,14 @@ void packMesh(MeshData *mesh_data, Mesh *mesh, Fluid* fluid, RayTracer *raytrace
     // new desired counts
     int triCount = 0;
     triCount += mesh? mesh->triCount() : 0;
-    triCount += fluid? fluid->triCount() : 0;
-    triCount += raytracer? raytracer->triCount() : 0;
-    triCount += photonmapping? photonmapping->triCount() : 0;
-    triCount += RayTree::triCount();
+    //triCount += fluid? fluid->triCount() : 0;
+    //triCount += raytracer? raytracer->triCount() : 0;
+    //triCount += photonmapping? photonmapping->triCount() : 0;
+    //triCount += RayTree::triCount();
 ;
     int pointCount = 0;
-    pointCount += fluid? fluid->pointCount() : 0;
-    pointCount += photonmapping? photonmapping->pointCount() : 0;
+    // pointCount += fluid? fluid->pointCount() : 0;
+    // pointCount += photonmapping? photonmapping->pointCount() : 0;
 
     mesh_data->meshTriCount = triCount;
     if (mesh_data->meshTriCount > mesh_data->meshTriCount_allocated) {
@@ -407,11 +411,11 @@ void packMesh(MeshData *mesh_data, Mesh *mesh, Fluid* fluid, RayTracer *raytrace
     float* current_points = mesh_data->meshPointData;
 
     mesh->packMesh(current);
-    raytracer->packMesh(current);
-    photonmapping->packMesh(current, current_points);
-    RayTree::packMesh(current);
+    //raytracer->packMesh(current);
+    //photonmapping->packMesh(current, current_points);
+    //RayTree::packMesh(current);
 
-    /******Fluid*****/
+    /*
     if (fluid) {
         fluid->PackMesh(current,current_points);
         BoundingBox bbox = fluid->getBoundingBox();
@@ -421,7 +425,7 @@ void packMesh(MeshData *mesh_data, Mesh *mesh, Fluid* fluid, RayTracer *raytrace
         mesh_data->bb_center.data[2] = center.z();
         mesh_data->bb_max_dim = bbox.maxDim();
         mesh_data->bb_scale = 1.8 / float(bbox.maxDim());
-    }
+    }*/
 }
 
 // ================================================================

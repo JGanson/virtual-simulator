@@ -1,0 +1,4 @@
+texture_file wood.ppm
+reflective 0 0 0
+emitted 0 0 0
+specularExponent 2000

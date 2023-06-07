@@ -46,7 +46,7 @@ inline double clamp01(double x) {
         return 1.0;
     }
     return x;
-};
+}
 
 inline float linear_to_srgb(float x) {
   float answer;
