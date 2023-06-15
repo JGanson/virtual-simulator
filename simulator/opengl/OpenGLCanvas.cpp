@@ -190,6 +190,35 @@ void OpenGLCanvas::keyboardCB(GLFWwindow* /*window*/, int key, int /*scancode*/,
     }
     if ((action == GLFW_PRESS || action == GLFW_REPEAT) && key < 256) {
         switch (key) {
+            case 'w': case 'W':{
+                GLOBAL_args->camera->moveCamera("forward");
+                break;
+            }
+            case 's': case 'S': {
+                GLOBAL_args->camera->moveCamera("back");
+                break;
+            }
+            case 'a': case 'A': {
+                GLOBAL_args->camera->moveCamera("left");
+                break;
+            }
+            case 'd': case 'D': {
+                GLOBAL_args->camera->moveCamera("right"); 
+                break;
+            }
+            case 'l': case 'L': {
+                if(GLOBAL_args->camera->lock){
+                    GLOBAL_args->camera->lock = !GLOBAL_args->camera->lock;
+                    std::cout<<"unlock focus point"<<std::endl;    
+                }
+                else{
+                    GLOBAL_args->camera->lock = !GLOBAL_args->camera->lock;
+                    GLOBAL_args->camera->focus = GLOBAL_args->camera->point_of_interest;
+                    std::cout<<"lock focus point"<<std::endl;
+                }
+                
+                break;
+            }
             /*
             case 'e': case 'E': {
                 // Draw ray traced image
@@ -576,7 +605,7 @@ void OrthographicCamera::glPlaceCamera() {
         h = size / 2.0;
         w = h * aspect;
     }
-
+    
     glm::mat4 projmat = glm::ortho<float>(-w,w,-h,h, 0.1f, 100.0f) ;
     glm::vec3 campos(camera_position.x(),camera_position.y(), camera_position.z());
     glm::vec3 poi(point_of_interest.x(),point_of_interest.y(),point_of_interest.z());
@@ -594,9 +623,22 @@ void PerspectiveCamera::glPlaceCamera() {
     glfwGetWindowSize(OpenGLCanvas::window, &GLOBAL_args->mesh_data->width, &GLOBAL_args->mesh_data->height);
     float aspect = GLOBAL_args->mesh_data->width / (float)GLOBAL_args->mesh_data->height;
     // must convert angle from degrees to radians
+ 
+    Vec3f point;
+
+    if(lock){
+        point = point_of_interest;
+    }
+    else{
+        point = focus; 
+    }
+
+    //std::cout<<camera_position.x()<<","<<camera_position.y()<<","<<camera_position.z()<<std::endl;
+
 
     glm::vec3 campos(camera_position.x(),camera_position.y(), camera_position.z());
-    glm::vec3 poi(point_of_interest.x(),point_of_interest.y(),point_of_interest.z());
+
+    glm::vec3 poi(point.x(),point.y(),point.z());
     glm::vec3 screenup(getScreenUp().x(),getScreenUp().y(),getScreenUp().z());
 
     glm::mat4 projmat = glm::perspective<float>(glm::radians(angle), aspect, 0.1f, 1000.0f);

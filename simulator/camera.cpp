@@ -12,6 +12,9 @@ Camera::Camera(const Vec3f &c, const Vec3f &poi, const Vec3f &u) {
   camera_position = c;
   point_of_interest = poi;
   up = u;
+  lock = true;
+  
+  focus = point_of_interest;
   up.Normalize();
 }
 
@@ -37,6 +40,55 @@ void Camera::dollyCamera(float dist) {
   Vec3f translate = float(0.004*d*dist)*getDirection();
   camera_position += translate;
 }
+
+
+
+// ====================================================================
+// moveCamera: Move camera to specified direction vector
+// ====================================================================
+void Camera::moveCamera(std::string mode){
+
+  if (!lock){
+    if (mode.compare("forward") == 0 ){
+      Vec3f dir =  focus - camera_position; 
+      dir.Normalize();
+
+      Vec3f translate = float(0.1)*dir;
+      camera_position += translate;
+      focus += translate;
+    }
+    else if(mode.compare("back")==0){
+      Vec3f dir =  focus - camera_position; 
+      dir.Normalize();
+
+      Vec3f translate = float(0.1)*-1*dir;
+      camera_position += translate;
+      focus += translate;
+    }
+    else if(mode.compare("left")==0){
+      Vec3f dir =  focus - camera_position; 
+      dir.Normalize();
+      Vec3f direction = Vec3f(dir.z(), 0, -1 *dir.x());
+      Vec3f translate = float(0.1)*direction;
+      camera_position += translate;
+      focus += translate;
+    }
+    else if(mode.compare("right")==0){
+      Vec3f dir =  focus - camera_position; 
+      dir.Normalize();
+      Vec3f direction = Vec3f(-1*dir.z(), 0, dir.x());
+      Vec3f translate = float(0.1)*direction;
+      camera_position += translate;
+      focus += translate;
+    }
+  }
+  else{
+    std::cout<<"unlock the focus point first!"<<std::endl;
+  }
+  
+}
+
+
 
 // ====================================================================
 // zoomCamera: Change the field of view/angle

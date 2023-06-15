@@ -28,6 +28,8 @@ public:
   virtual void zoomCamera(float dist) = 0;
   void truckCamera(float dx, float dy);
   void rotateCamera(float rx, float ry);
+  void moveCamera(std::string mode);
+
 
   const Matrix& getViewMatrix() const { return ViewMatrix; }
   const Matrix& getProjectionMatrix() const { return ProjectionMatrix; }
@@ -61,9 +63,14 @@ public:
   // REPRESENTATION
   Vec3f point_of_interest;
   Vec3f camera_position;
+
   Vec3f up;
   Matrix ViewMatrix;
   Matrix ProjectionMatrix;
+
+  //control Camera move
+  bool lock; // if look to the point of interest
+  Vec3f focus; 
 };
 
 // ====================================================================
