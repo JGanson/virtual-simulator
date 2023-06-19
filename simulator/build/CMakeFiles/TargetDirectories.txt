@@ -1,3 +1,0 @@
-C:/Users/JGanson/Desktop/CG/Virtual-AI/simulator/build/CMakeFiles/render.dir
-C:/Users/JGanson/Desktop/CG/Virtual-AI/simulator/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/JGanson/Desktop/CG/Virtual-AI/simulator/build/CMakeFiles/ZERO_CHECK.dir

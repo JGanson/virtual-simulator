@@ -1,0 +1,7 @@
+1.
+Follow the Link here to set up the environment (remember use VS 2019)
+https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S23/using_cmake.php
+
+
+Debug command like this:
+build/Debug/render.exe --input src/assets/fluid-drop-transmissive.scene --size 1000 1000
