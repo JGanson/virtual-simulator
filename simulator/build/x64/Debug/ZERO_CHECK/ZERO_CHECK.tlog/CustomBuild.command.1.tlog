@@ -1,0 +1,10 @@
+^C:\USERS\JGANSON\DESKTOP\CG\VIRTUAL-AI\SIMULATOR\BUILD\CMAKEFILES\BA9B8C4D7656C59FFD5E2CEDCD4132A6\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/JGanson/Desktop/CG/Virtual-AI/simulator/src -BC:/Users/JGanson/Desktop/CG/Virtual-AI/simulator/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/JGanson/Desktop/CG/Virtual-AI/simulator/build/hw3.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

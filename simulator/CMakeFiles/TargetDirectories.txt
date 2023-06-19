@@ -1,3 +1,0 @@
-/home2/Virtual-AI/simulator/CMakeFiles/rebuild_cache.dir
-/home2/Virtual-AI/simulator/CMakeFiles/edit_cache.dir
-/home2/Virtual-AI/simulator/CMakeFiles/render.dir
