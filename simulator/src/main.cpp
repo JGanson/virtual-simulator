@@ -18,7 +18,7 @@ int NSApplicationMain(int argc, const char * argv[]);
 MeshData *mesh_data;
 
 int main(int argc, const char * argv[]) {
-
+  
     // parse the command line arguments and initialize the MeshData
     MeshData mymesh_data;
     mesh_data = &mymesh_data;

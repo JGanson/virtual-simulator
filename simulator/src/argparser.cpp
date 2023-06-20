@@ -18,7 +18,7 @@
 #if __APPLE__
 #include "matrix.h"
 #else
-#include <glm/gtc/type_ptr.hpp>
+#include <gtc/type_ptr.hpp>
 #endif
 
 

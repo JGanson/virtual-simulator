@@ -4,10 +4,10 @@
 
 #include <cstring>
 
-#include "argparser.h"
-#include "camera.h"
-#include "mesh.h"
-#include "meshdata.h"
+#include "../argparser.h"
+#include "../camera.h"
+#include "../mesh.h"
+#include "../meshdata.h"
 
 // ====================================================================
 // ====================================================================

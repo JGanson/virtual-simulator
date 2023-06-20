@@ -5,3 +5,14 @@ https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S23/using_cmake.php
 
 Debug command like this:
 build/Debug/render.exe --input src/assets/fluid-drop-transmissive.scene --size 1000 1000
+
+
+2. Using VS debugger
+
+a. Create object from existing code
+https://learn.microsoft.com/en-us/cpp/build/how-to-create-a-cpp-project-from-existing-code?view=msvc-170
+
+b. set up including libs
+https://www.youtube.com/watch?v=HzFatL3WT6g
+https://youtu.be/64WRg4INgfQ
+

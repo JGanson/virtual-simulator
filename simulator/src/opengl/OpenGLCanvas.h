@@ -2,10 +2,10 @@
 #define _OPEN_GL_CANVAS_H_
 
 // Graphics Library Includes
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+#include <glew.h>
+#include <glfw3.h>
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
 
 #include <cstdio>
 #include <cstdlib>
