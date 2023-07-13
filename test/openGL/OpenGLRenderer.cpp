@@ -30,6 +30,8 @@ bool DrawPixel();
 // ==================================================================
 // helper functions to convert between matrix formats
 
+
+
 void convert(Matrix &b, const glm::mat4 &a) {
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
@@ -108,6 +110,7 @@ OpenGLRenderer::OpenGLRenderer(MeshData *_mesh_data, ArgParser *args) {
 
         GLOBAL_args->camera->glPlaceCamera();
 
+        
         // Debug to test, Copy from Fluid Part
         // transform the object as necessary to fit in the
         // (-1,-1,-1)->(1,1,1) box
@@ -129,6 +132,7 @@ OpenGLRenderer::OpenGLRenderer(MeshData *_mesh_data, ArgParser *args) {
         glm::mat4 MVP = ProjectionMatrix_mat4 * ViewMatrix_mat4 * ModelMatrix;
 
         Animate();
+        OpenGLCanvas::move_detect();
         updateVBOs();
 
         // pass the matrix to the draw routines (for further editing)
@@ -147,6 +151,7 @@ OpenGLRenderer::OpenGLRenderer(MeshData *_mesh_data, ArgParser *args) {
     glfwTerminate();
     exit(EXIT_SUCCESS);
 }
+
 
 // ====================================================================
 
