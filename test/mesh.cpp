@@ -72,10 +72,11 @@ Vertex* Mesh::addPersonVertex(const Vec3f& position,int index) {
     index += in;
     person_vertices.push_back(new Vertex(index, position));
     // extend the bounding box to include this point
-    if (bbox == NULL)
-        bbox = new BoundingBox(position, position);
+    // Cause error to do..
+    if (P_bbox == NULL)
+        P_bbox = new BoundingBox(position, position);
     else
-        bbox->Extend(position);
+        P_bbox->Extend(position);
     return person_vertices[in];
 }
 
@@ -285,6 +286,7 @@ void Mesh::Load(std::ifstream& file, Material* mat, const Matrix& transform) {
     std::string line_buf;
     person = false;
     bbox = new BoundingBox();
+    P_bbox = new BoundingBox();
     Material *active_material = mat;
     int base = numVertices(false)+numVertices(true); // the number of vertices to start out is our base offset to work with
     int line_num = 0;

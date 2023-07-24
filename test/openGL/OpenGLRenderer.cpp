@@ -197,7 +197,8 @@ void OpenGLRenderer::cleanupVBOs() {
 
 void OpenGLRenderer::updateVBOs() {
     HandleGLError("enter updateVBOs");
-
+    //update person object position due to gravity 
+    //OpenGLCanvas::gravity();
     glBindVertexArray(mesh_tris_VaoId);
     glBindBuffer(GL_ARRAY_BUFFER, mesh_tris_VBO);
     int sizeOfVertices = 3*sizeof(glm::vec4) * mesh_data->meshTriCount * 3;

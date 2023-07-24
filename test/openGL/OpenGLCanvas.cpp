@@ -198,6 +198,16 @@ void OpenGLCanvas::keyboardCB(GLFWwindow* /*window*/, int key, int /*scancode*/,
             GLOBAL_args->camera->focus = GLOBAL_args->camera->point_of_interest;
             std::cout << "lock focus point" << std::endl;
         }
+    }else if (keys['P']) {
+        if (GLOBAL_args->camera->first_person) {
+            GLOBAL_args->camera->first_person = !GLOBAL_args->camera->first_person;
+            GLOBAL_args->camera->focus = GLOBAL_args->mesh->getPersonVertex(5)->get();
+            std::cout << "start first person" << std::endl;
+        }else {
+            GLOBAL_args->camera->first_person = !GLOBAL_args->camera->first_person;
+            GLOBAL_args->camera->focus = GLOBAL_args->camera->point_of_interest;
+            std::cout << "stop first person" << std::endl;
+        }
     }
     if (action == GLFW_PRESS) {
        keys[key] = true;
@@ -206,31 +216,65 @@ void OpenGLCanvas::keyboardCB(GLFWwindow* /*window*/, int key, int /*scancode*/,
 }
 
 void OpenGLCanvas::move_detect() {
+    Vec3f pos = GLOBAL_args->camera->getDirection();
+    double temp = pos.z();
+    Vec3f dir;
+    dir = pos;
+    dir.setz(pos.x());
+    dir.setx(-temp);
     if (keys['W']) {
         if (!GLOBAL_args->camera->lock)
             GLOBAL_args->camera->moveCamera("forward");
-        else
-            GLOBAL_args->mesh->move_person("forward");
+        else{
+            if (keys['S'])
+                return;
+            GLOBAL_args->mesh->move_person(pos);
+            if (keys['D']) {
+                GLOBAL_args->mesh->move_person(dir);
+            }
+            else if (keys['A']) {
+                GLOBAL_args->mesh->move_person(-dir);
+            }
+        }
         PackMesh();
     }else if (keys['S']) {
         if (!GLOBAL_args->camera->lock)
             GLOBAL_args->camera->moveCamera("back");
-        else
-            GLOBAL_args->mesh->move_person("back");
+        else {
+            if (keys['W'])
+                return;
+            GLOBAL_args->mesh->move_person(-pos);
+            if (keys['D']) {
+                GLOBAL_args->mesh->move_person(dir);
+            }else if (keys['A']) {
+                GLOBAL_args->mesh->move_person(-dir);
+            }
+        }
         PackMesh();
     }else if (keys['D']) {
         if (!GLOBAL_args->camera->lock)
             GLOBAL_args->camera->moveCamera("right");
-        else
-            GLOBAL_args->mesh->move_person("right");
+        else {
+            if (keys['A'])
+                return;
+            GLOBAL_args->mesh->move_person(dir);
+        }
         PackMesh();
     }else if (keys['A']) {
-        if(!GLOBAL_args->camera->lock)
+        if (!GLOBAL_args->camera->lock)
             GLOBAL_args->camera->moveCamera("left");
-        else
-            GLOBAL_args->mesh->move_person("left");
-        PackMesh();
+        else {
+            if (keys['D'])
+                return;
+            GLOBAL_args->mesh->move_person(-dir);
+            PackMesh();
+        }
     }
+}
+
+void OpenGLCanvas::gravity() {
+    //GLOBAL_args->mesh->move_person("down");
+    
 }
 // ========================================================
 // Load the vertex & fragment shaders

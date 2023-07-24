@@ -52,6 +52,7 @@ public:
   static void keyboardCB(GLFWwindow *window, int key, int scancode, int action, int mods);
   static void error_callback(int error, const char* description);
   static void move_detect();
+  static void gravity();
 };
 
 // ====================================================================

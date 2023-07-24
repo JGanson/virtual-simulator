@@ -113,9 +113,17 @@ public:
     int triCount() const; 
     void packMesh(float*& current);
 
-    void move_person(std::string dir) { 
+    void move_person(Vec3f dir) {
+        double totle = abs(dir.x()) + abs(dir.z());
+        Vec3f transfer;
+        transfer.setx(dir.x() / totle * 0.01);
+        transfer.setz(dir.z() / totle * 0.01);
         for (int i = 0; i < person_vertices.size(); i++) {
-            person_vertices[i]->move_vertex(dir);
+            person_vertices[i]->move_vertex(transfer);
+        }
+        if (GLOBAL_args->camera->first_person) {
+            GLOBAL_args->camera->camera_position += transfer;
+            GLOBAL_args->camera->point_of_interest += transfer;
         }
     }
 
@@ -162,6 +170,7 @@ private:
 
     // the bounding box of all rasterized faces in the scene
     BoundingBox *bbox; 
+    BoundingBox* P_bbox;
 
     // the vertices & edges used by all quads (including rasterized primitives)
     std::vector<Vertex*> vertices;  
