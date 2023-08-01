@@ -5,6 +5,8 @@ from scipy.io.wavfile import write
 fs = 44100
 sec = 5
 
+print(sd.query_devices())
+
 i = 0
 while True:
     answer = input("Record? (Y/N): ")
