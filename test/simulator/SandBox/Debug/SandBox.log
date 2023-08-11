@@ -1,0 +1,2 @@
+﻿apply.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) void __cdecl Simulator::Print(void)" (__imp_?Print@Simulator@@YAXXZ) referenced in function _main
+C:\CS\Game engine\Simulator\Debug\SandBox.exe : fatal error LNK1120: 1 unresolved externals
