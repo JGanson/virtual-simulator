@@ -1,0 +1,3 @@
+﻿     Creating library C:\CS\Game engine\Simulator\Debug\Simulator.lib and object C:\CS\Game engine\Simulator\Debug\Simulator.exp
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol _main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\CS\Game engine\Simulator\Debug\Simulator.exe : fatal error LNK1120: 1 unresolved externals
